@@ -1,7 +1,11 @@
+using Microsoft.EntityFrameworkCore;
+using RazorPage.Data;
+
 var builder = WebApplication.CreateBuilder(args);
 
 // Add services to the container.
 builder.Services.AddRazorPages();
+builder.Services.AddDbContext<PizzaDbContext>(options => options.UseSqlServer(builder.Configuration.GetConnectionString("RazorPage")));
 
 var app = builder.Build();
 
